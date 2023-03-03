@@ -16,34 +16,28 @@
 		<a th:href="@{/customers}"><i class="bi-people-fill"></i> Customers</a>
 	</div>
 
-	<div class="content">
-		<div class="container my-3">
-    		<div class="row">
-        		<div class="col-md-8 mx-auto">
-            		<h2>EDIT CUSTOMER INFO</h2>
-            		<form th:action="@{/customers/edit}" th:object="${cust}" method="POST">
-                		<div class="form-row">
-                			<div class="col-md-6 form-group">
-                        		<input type="hidden" class="form-control" th:field="*{id}" readonly>
-                    		</div>
-                    		<div class="col-md-6 form-group">
-                        		<label>First Name</label>
-                        		<input type="text" class="form-control" th:field="*{firstName}">
-                    		</div>
-                    		<div class="col-md-6 form-group">
-                        		<label>Last Name</label>
-                        		<input type="text" class="form-control" th:field="*{lastName}">
-                    		</div>
-                    		<div class="col-md-6 form-group">
-                        		<label>Email</label>
-                        		<input type="text" class="form-control" th:field="*{email}">
-                    		</div>
-                    	</div>
-                		<button type="submit" class="btn btn-primary btn-block mt-3">Update Customer Info</button>
-            		</form>
-       	 		</div>
-    		</div>
-		</div>
+	<div class="content">  
+		<div class="container my-3">	
+   			<h2>EDIT CUSTOMER INFO</h2>
+        	<form th:action="@{/customers/edit}" th:object="${cust}" method="POST">
+        		<div class="col-md-6 form-group">
+        			<input type="hidden" class="form-control" th:field="*{id}" readonly>
+        		</div>
+        		<div class="col-md-6 form-group">
+					<label>First Name</label>
+        			<input type="text" class="form-control" th:field="*{firstName}">
+        		</div>
+        		<div class="col-md-6 form-group">
+					<label>Last Name</label>
+        			<input type="text" class="form-control" th:field="*{lastName}">
+        		</div>
+        		<div class="col-md-6 form-group">
+					<label>Email</label>
+        			<input type="text" class="form-control" th:field="*{email}">
+        		</div>
+				<button type="submit" class="btn btn-primary btn-block mt-3">Update Customer Info</button>
+        	</form>
+        </div>
 	</div>
 
 </body>
