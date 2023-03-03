@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+
+</style>
+</head>
+<body>
+	<div class="sidebar">
+		<a class="active"><i class="bi-speedometer2"></i> Dashboard</a> 
+		<a th:href="@{/inventory}"><i class="bi-box-seam"></i> Inventory</a> 
+		<a th:href="@{/sales}"><i class="bi-bar-chart-line"></i> Sales</a>
+		<a th:href="@{/customers}"><i class="bi-people-fill"></i> Customers</a>
+	</div>
+
+	<div class="content">
+		<h2>DASHBOARD</h2>
+		<p>This example use media queries to transform the sidebar to a
+			top navigation bar when the screen size is 700px or less.</p>
+		<p>We have also added a media query for screens that are 400px or
+			less, which will vertically stack and center the navigation links.</p>
+		<h3>Resize the browser window to see the effect.</h3>
+	</div> 
+	
+	
+</body>
+</html>

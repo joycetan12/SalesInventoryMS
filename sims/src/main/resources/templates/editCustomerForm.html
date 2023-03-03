@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edit Customer</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<div class="sidebar">
+		<a th:href="@{/dashboard}"><i class="bi-speedometer2"></i> Dashboard</a> 
+		<a th:href="@{/inventory}"><i class="bi-box-seam"></i> Inventory</a> 
+		<a th:href="@{/sales}"><i class="bi-bar-chart-line"></i> Sales</a>
+		<a th:href="@{/customers}"><i class="bi-people-fill"></i> Customers</a>
+	</div>
+
+	<div class="content">
+		<div class="container my-3">
+    		<div class="row">
+        		<div class="col-md-8 mx-auto">
+            		<h2>EDIT CUSTOMER INFO</h2>
+            		<form th:action="@{/customers/edit}" th:object="${cust}" method="POST">
+                		<div class="form-row">
+                			<div class="col-md-6 form-group">
+                        		<input type="hidden" class="form-control" th:field="*{id}" readonly>
+                    		</div>
+                    		<div class="col-md-6 form-group">
+                        		<label>First Name</label>
+                        		<input type="text" class="form-control" th:field="*{firstName}">
+                    		</div>
+                    		<div class="col-md-6 form-group">
+                        		<label>Last Name</label>
+                        		<input type="text" class="form-control" th:field="*{lastName}">
+                    		</div>
+                    		<div class="col-md-6 form-group">
+                        		<label>Email</label>
+                        		<input type="text" class="form-control" th:field="*{email}">
+                    		</div>
+                    	</div>
+                		<button type="submit" class="btn btn-primary btn-block mt-3">Update Customer Info</button>
+            		</form>
+       	 		</div>
+    		</div>
+		</div>
+	</div>
+
+</body>
+</html>
