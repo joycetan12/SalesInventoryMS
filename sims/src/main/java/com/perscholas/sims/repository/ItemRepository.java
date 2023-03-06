@@ -1,5 +1,6 @@
 package com.perscholas.sims.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,7 +11,9 @@ import com.perscholas.sims.model.Item;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long>{
 	
-//	List<Item> findByUserId(Long userId);
-	Optional<Item> findByName(String name);
+//	Optional<Item> findByName(String name);
 	
+	List<Item> findByInventoryLessThan(int inventory);
+	
+	List<Item> findByOrderByName();
 }

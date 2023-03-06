@@ -57,7 +57,23 @@
           			<div class="card text-dark bg-light mb-3">
           				<div class="card-body">
             				<h4 class="card-title">Items - Low Stock</h4>
-            				<p class="card-text">items</p> 
+            				<div  th:if="${lowItemList != null and !lowItemList.isEmpty()}">
+            					<table class="table">
+            						<tr>
+            							<th>Item Name</th>
+            							<th>Inventory Count</th>
+            						</tr>
+            						<tr th:each="item : ${lowItemList}">
+            							<td th:text="${item.name}"></td>
+            							<td th:text="${item.inventory}"></td>
+            						</tr>
+            					</table>
+            				</div>
+            				   
+							<h5 th:unless="${lowItemList != null and !lowItemList.isEmpty()}">
+   								There are no items with low inventory
+							</h5>
+							
             			</div>
           			</div>
         		</div>
@@ -65,7 +81,18 @@
           			<div class="card text-dark bg-light mb-3">
           				<div class="card-body">
             				<h4 class="card-title">Top Selling Items</h4>
-            				<p class="card-text">items</p> 
+            				<table class="table">
+            					<tr>
+            						<th>Item Name</th>
+            						<th>Total Quantity Sold</th>
+            						<th>Total Revenue</th>
+            					</tr>
+            					<tr th:each="obj : ${topItems}">
+            						<td th:text="${obj[0]}"></td>
+            						<td th:text="${obj[1]}"></td>
+            						<td th:text="'$' + ${obj[2]}"></td>
+            					</tr>
+            				</table>
             			</div>
           			</div>
         		</div>

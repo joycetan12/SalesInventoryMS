@@ -22,7 +22,7 @@ public class SaleService {
 	
 
 	public List<Sale> getAllSales() {
-		return saleRepository.findAll();
+		return saleRepository.findByOrderByDateOfSaleDesc();
 	}
 
 	public Optional<Sale> getSaleById(Long saleId) {
@@ -78,6 +78,10 @@ public class SaleService {
 
 	public void deleteSaleById(Long saleId) {
 		saleRepository.deleteById(saleId);
+	}
+	
+	public List<Object[]> getTop3SaleItems() {
+		return saleRepository.findTop3ByTotalQuantity();
 	}
 
 }

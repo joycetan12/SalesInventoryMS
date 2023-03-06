@@ -22,16 +22,20 @@ public class ItemService {
 	private SaleRepository saleRepository;
 
 	public List<Item> getAllItems() {
-		return itemRepository.findAll();
+		return itemRepository.findByOrderByName();
 	}
 
 	public Optional<Item> getItemById(Long itemId) {
 		return itemRepository.findById(itemId);
 	}
 	
-	public Optional<Item> getItemByName(String itemName){
-		return itemRepository.findByName(itemName);
+	public List<Item> getAllLowInventory(int quantity){
+		return itemRepository.findByInventoryLessThan(quantity);
 	}
+	
+//	public Optional<Item> getItemByName(String itemName){
+//		return itemRepository.findByName(itemName);
+//	}
 
 	public void addNewItem(Item item) {
 		itemRepository.save(item);	
