@@ -33,7 +33,7 @@ public class SaleService {
 		Item existingItem = itemRepository.findById(sale.getItem().getId()).get();
 		
 		if(sale.getQuantity() <= existingItem.getInventory()) {
-			Integer newCount = existingItem.getInventory() - sale.getQuantity();
+			int newCount = existingItem.getInventory() - sale.getQuantity();
 			existingItem.setInventory(newCount);
 			itemRepository.save(existingItem);
 			saleRepository.save(sale);
@@ -50,21 +50,26 @@ public class SaleService {
 		if (sale.isPresent()) {
 			Sale existingSale = sale.get();
 			
-			// TODO: if item is changed and quantity
+			// TODO: check if new quantity is within inventory count 
 			
-			if(existingSale.getQuantity() != updatedSale.getQuantity()) {
+			// update item inventory depending on updated sale fields 
+			if(existingSale.getItem() != updatedSale.getItem()) {
+				Item existingItem = itemRepository.findById(existingSale.getItem().getId()).get();
+				existingItem.setInventory(existingItem.getInventory() + existingSale.getQuantity());
+				Item updatedItem = itemRepository.findById(updatedSale.getItem().getId()).get();
+				updatedItem.setInventory(updatedItem.getInventory() - updatedSale.getQuantity());
+			}
+			else if(existingSale.getQuantity() != updatedSale.getQuantity()) {
 				Item existingItem = itemRepository.findById(existingSale.getItem().getId()).get();
 				int difference = updatedSale.getQuantity() - existingSale.getQuantity();
 				int newCount = existingItem.getInventory() - difference;
 				existingItem.setInventory(newCount);
-				existingSale.setQuantity(updatedSale.getQuantity());
 			}
-			
-			// TODO: check if new quantity is within inventory count 
-			
+
 			existingSale.setDateOfSale(updatedSale.getDateOfSale());
 			existingSale.setItem(updatedSale.getItem());
 			existingSale.setCustomer(updatedSale.getCustomer());
+			existingSale.setQuantity(updatedSale.getQuantity());
 			existingSale.setSalePrice(updatedSale.getSalePrice());
 			existingSale.setPaid(updatedSale.isPaid());
 			saleRepository.save(updatedSale);
