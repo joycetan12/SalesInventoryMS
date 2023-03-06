@@ -22,7 +22,7 @@ public class CustomerService {
 	private SaleRepository saleRepository;
 	
 	public List<Customer> getAllCustomers() {
-		return customerRepository.findAll();
+		return customerRepository.findByOrderByFirstName();
 	}
 
 	public Optional<Customer> getCustomerById(Long custId) {
