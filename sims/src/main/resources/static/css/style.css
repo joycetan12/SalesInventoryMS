@@ -76,3 +76,7 @@ h2 {
 	font-weight: bold;
 	padding-left: 16px;
 }
+
+#searchBar {
+	width: 100%;
+}

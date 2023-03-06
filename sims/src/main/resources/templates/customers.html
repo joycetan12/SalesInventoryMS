@@ -24,7 +24,11 @@
 	<div class="content">
 		<div class="container my-3">
 			<h2>CUSTOMERS</h2>
-			<table class="table table-dark table-striped">
+			
+			<label for="searchBar"><b>Search:</b></label>
+			<input type="text" id="searchBar" onkeyup="search()" placeholder="Search for customer first name..." ><br><br>
+			
+			<table class="table table-dark table-striped" id="myTable">
   				<thead>
     				<tr>
       					<th scope="col">First Name</th>
@@ -49,6 +53,28 @@
 			<button th:onclick="|window.location.href='/customers/create'|">Create New Customer</button>
 		</div>
 	</div>
+	
+	<script>
+		function search() {
+  			var input, filter, table, tr, td, i, txtValue;
+  			input = document.getElementById("searchBar");
+  			filter = input.value.toUpperCase();
+  			table = document.getElementById("myTable");
+  			tr = table.getElementsByTagName("tr");
+  			for (i = 0; i < tr.length; i++) {
+    			td = tr[i].getElementsByTagName("td")[2];
+    			if (td) {
+      				txtValue = td.textContent || td.innerText;
+      				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        				tr[i].style.display = "";
+      				} 
+      				else {
+        				tr[i].style.display = "none";
+      				}
+   				}       
+  			}
+		}
+	</script>
 	
 </body>
 </html>
