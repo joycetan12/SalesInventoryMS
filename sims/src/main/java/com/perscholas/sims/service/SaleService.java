@@ -1,5 +1,6 @@
 package com.perscholas.sims.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,8 @@ import com.perscholas.sims.model.Item;
 import com.perscholas.sims.model.Sale;
 import com.perscholas.sims.repository.ItemRepository;
 import com.perscholas.sims.repository.SaleRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class SaleService {
@@ -82,6 +85,18 @@ public class SaleService {
 	
 	public List<Object[]> getTop3SaleItems() {
 		return saleRepository.findTop3ByTotalQuantity();
+	}
+	
+	public BigDecimal getTotalRevenue() {
+		return saleRepository.getTotalRevenue();
+	}
+	
+	public BigDecimal getTotalProfit() {
+		return saleRepository.getTotalProfit();
+	}
+	
+	public int getTotalSales() {
+		return saleRepository.getTotalSales();
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.perscholas.sims.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,16 @@ public class DashboardController {
 	
 	@GetMapping("/dashboard")
 	public String displayDashboard(Model model) {
+		
+		BigDecimal revenue = saleService.getTotalRevenue();
+		model.addAttribute("revenue", revenue);
+		
+		BigDecimal profit = saleService.getTotalProfit();
+		model.addAttribute("profit", profit);
+		
+		int salesCount = saleService.getTotalSales();
+		model.addAttribute("salesCount", salesCount);
+		
 		List<Object[]> topObjList = saleService.getTop3SaleItems();
 		for(Object[] obj: topObjList) {
 			Item item = itemService.getItemById((Long) obj[0]).get();

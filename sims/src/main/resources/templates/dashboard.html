@@ -29,16 +29,16 @@
         		<div class="col-sm-4">
           			<div class="card text-dark bg-light mb-3">
           				<div class="card-body">
-            				<h4 class="card-title">Revenue</h4>
-            				<p class="card-text">amount</p> 
+            				<h4 class="card-title">Total Revenue</h4>
+            				<p class="card-text" th:text="'$' + ${revenue}"></p> 
             			</div>
           			</div>
         		</div>
         		<div class="col-sm-4">
           			<div class="card text-dark bg-light mb-3">
           				<div class="card-body">
-            				<h4 class="card-title">Profit</h4>
-            				<p class="card-text">amount</p> 
+            				<h4 class="card-title">Total Profit</h4>
+            				<p class="card-text" th:text="'$' + ${profit}">amount</p> 
             			</div>
           			</div>
         		</div>
@@ -46,7 +46,7 @@
           			<div class="card text-dark bg-light mb-3">
           				<div class="card-body">
             				<h4 class="card-title">Total Sales</h4>
-            				<p class="card-text">amount</p> 
+            				<p class="card-text" th:text="${salesCount}"></p> 
             			</div>
           			</div>
         		</div>
@@ -56,8 +56,8 @@
       			<div class="col-sm-6">
           			<div class="card text-dark bg-light mb-3">
           				<div class="card-body">
-            				<h4 class="card-title">Items - Low Stock</h4>
-            				<div  th:if="${lowItemList != null and !lowItemList.isEmpty()}">
+            				<h4 class="card-title">Inventory - Low Stock</h4>
+            				<div  th:if="${!lowItemList.isEmpty()}">
             					<table class="table">
             						<tr>
             							<th>Item Name</th>
@@ -70,7 +70,7 @@
             					</table>
             				</div>
             				   
-							<h5 th:unless="${lowItemList != null and !lowItemList.isEmpty()}">
+							<h5 th:unless="${!lowItemList.isEmpty()}">
    								There are no items with low inventory
 							</h5>
 							
@@ -83,11 +83,13 @@
             				<h4 class="card-title">Top Selling Items</h4>
             				<table class="table">
             					<tr>
+            						<th></th>
             						<th>Item Name</th>
             						<th>Total Quantity Sold</th>
             						<th>Total Revenue</th>
             					</tr>
-            					<tr th:each="obj : ${topItems}">
+            					<tr th:each="obj, objStat : ${topItems}">
+            						<th th:text="(${objStat.index} + 1)"></th>
             						<td th:text="${obj[0]}"></td>
             						<td th:text="${obj[1]}"></td>
             						<td th:text="'$' + ${obj[2]}"></td>
