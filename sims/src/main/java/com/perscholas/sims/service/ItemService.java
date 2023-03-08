@@ -33,9 +33,9 @@ public class ItemService {
 		return itemRepository.findByInventoryLessThan(quantity);
 	}
 	
-//	public Optional<Item> getItemByName(String itemName){
-//		return itemRepository.findByName(itemName);
-//	}
+	public Optional<Item> getItemByName(String itemName){
+		return itemRepository.findByName(itemName);
+	}
 
 	public void addNewItem(Item item) {
 		itemRepository.save(item);	

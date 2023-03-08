@@ -31,6 +31,7 @@
                 <div class="col-md-6 form-group">
                     <label>Date Of Sale</label>
                     <input type="date" class="form-control" th:field="*{dateOfSale}">
+                    <p class="error-message" th:each="error : ${#fields.errors('dateOfSale')}" th:text="${error}">Validation error</p>
                 </div>
            		<div class="col-md-6 form-group">
                 	<label>Customer</label><br>
@@ -47,10 +48,12 @@
                	<div class="col-md-6 form-group">
                     <label>Quantity</label>
                     <input type="number" step="any" class="form-control" th:field="${sale.quantity}">
+                    <p class="error-message" th:each="error : ${#fields.errors('quantity')}" th:text="${error}">Validation error</p>
                 </div>
                 <div class="col-md-6 form-group">
                     <label>Sale Price Per Item</label>
                     <input type="number" step="any" class="form-control" th:field="${sale.salePrice}">
+                    <p class="error-message" th:each="error : ${#fields.errors('salePrice')}" th:text="${error}">Validation error</p>
                 </div>
             	<div class="col-md-6 form-group">
                     <label>Sale Status</label>

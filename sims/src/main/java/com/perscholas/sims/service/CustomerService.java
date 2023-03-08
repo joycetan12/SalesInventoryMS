@@ -28,20 +28,24 @@ public class CustomerService {
 	public Optional<Customer> getCustomerById(Long custId) {
 		return customerRepository.findById(custId);
 	}
+	
+	public Optional<Customer> getCustomerByEmail(String email){
+		return customerRepository.findByEmail(email);
+	}
 
 	public void addNewCustomer(Customer cust) {
 		customerRepository.save(cust);	
 	}
 
-	public void updateCustomer(Customer custUpdate) {
-		Optional<Customer> existingCust = customerRepository.findById(custUpdate.getId());
+	public void updateCustomer(Customer updatedCust) {
+		Optional<Customer> cust = customerRepository.findById(updatedCust.getId());
 		
-		if(existingCust.isPresent()) {
-			Customer updatedCust = existingCust.get();
-			updatedCust.setFirstName(custUpdate.getFirstName());
-			updatedCust.setLastName(custUpdate.getLastName());
-			updatedCust.setEmail(custUpdate.getEmail());
-			customerRepository.save(updatedCust);
+		if(cust.isPresent()) {
+			Customer existingCust = cust.get();
+			existingCust.setFirstName(updatedCust.getFirstName());
+			existingCust.setLastName(updatedCust.getLastName());
+			existingCust.setEmail(updatedCust.getEmail());
+			customerRepository.save(existingCust);
 		}
 	}
 

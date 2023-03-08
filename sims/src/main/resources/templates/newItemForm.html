@@ -28,18 +28,22 @@
            		<div class="col-md-6 form-group">
                 	<label>Item Name</label>
                    	<input type="text" class="form-control" th:field="*{name}">
+                   	<p class="error-message" th:each="error : ${#fields.errors('name')}" th:text="${error}">Validation error</p>
                 </div>
          		<div class="col-md-6 form-group">
                 	<label>Item Description</label>
                     <textarea class="form-control" th:field="*{description}" rows="3"></textarea>
+                    <p class="error-message" th:each="error : ${#fields.errors('description')}" th:text="${error}">Validation error</p>
                	</div>
                 <div class="col-md-6 form-group">
                     <label>Cost Per Item</label>
                     <input type="number" step="any" class="form-control" th:field="*{cost}">
+                    <p class="error-message" th:each="error : ${#fields.errors('cost')}" th:text="${error}">Validation error</p>
                 </div>
                 <div class="col-md-6 form-group">
                     <label>Inventory Count</label>
                     <input type="number" step="any" class="form-control" th:field="*{inventory}">
+                    <p class="error-message" th:each="error : ${#fields.errors('inventory')}" th:text="${error}">Validation error</p>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block mt-3">Create Item</button>
            	</form>

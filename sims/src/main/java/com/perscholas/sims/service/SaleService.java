@@ -34,17 +34,12 @@ public class SaleService {
 
 	public void addNewSale(Sale sale) {
 		Item existingItem = itemRepository.findById(sale.getItem().getId()).get();
-		
-		if(sale.getQuantity() <= existingItem.getInventory()) {
-			int newCount = existingItem.getInventory() - sale.getQuantity();
-			existingItem.setInventory(newCount);
-			itemRepository.save(existingItem);
-			saleRepository.save(sale);
-		}
-		else {
-			// TODO: need to show some type of message on front end
-			System.out.println("Not enough inventory for this sale item");
-		}
+
+		// update item inventory based on sale quantity 
+		int newCount = existingItem.getInventory() - sale.getQuantity();
+		existingItem.setInventory(newCount);
+		itemRepository.save(existingItem);
+		saleRepository.save(sale);
 	}
 
 	public void updateSale(Sale updatedSale) {
@@ -52,8 +47,6 @@ public class SaleService {
 
 		if (sale.isPresent()) {
 			Sale existingSale = sale.get();
-			
-			// TODO: check if new quantity is within inventory count 
 			
 			// update item inventory depending on updated sale fields 
 			if(existingSale.getItem() != updatedSale.getItem()) {
