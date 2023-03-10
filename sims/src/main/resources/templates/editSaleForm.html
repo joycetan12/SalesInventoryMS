@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
 <body>
 
 	<nav class="navbar navbar-custom">
-        <a class="navbar-brand"><i class="bi-front"></i>  Sales & Inventory Management</a>
+        <a class="navbar-brand" th:href="@{/}"><i class="bi-front"></i>  Sales & Inventory Management</a>
     </nav>
     
 	<div class="sidebar">
@@ -19,6 +19,7 @@
 		<a th:href="@{/inventory}"><i class="bi-box-seam"></i> Inventory</a> 
 		<a th:href="@{/sales}"><i class="bi-bar-chart-line"></i> Sales</a>
 		<a th:href="@{/customers}"><i class="bi-people-fill"></i> Customers</a>
+		<a class="logout" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
 	</div>
 
 	<div class="content">

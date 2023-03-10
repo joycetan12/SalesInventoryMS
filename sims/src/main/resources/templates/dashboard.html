@@ -11,7 +11,7 @@
 <body>
 
 	<nav class="navbar navbar-custom">
-        <a class="navbar-brand"><i class="bi-front"></i>  Sales & Inventory Management</a>
+        <a class="navbar-brand" th:href="@{/}"><i class="bi-front"></i>  Sales & Inventory Management</a>
     </nav>
 
 	<div class="sidebar">
@@ -19,6 +19,7 @@
 		<a th:href="@{/inventory}"><i class="bi-box-seam"></i> Inventory</a> 
 		<a th:href="@{/sales}"><i class="bi-bar-chart-line"></i> Sales</a>
 		<a th:href="@{/customers}"><i class="bi-people-fill"></i> Customers</a>
+		<a class="logout" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
 	</div>
 
 	<div class="content">
@@ -27,7 +28,7 @@
 			
 			<div class="row">
         		<div class="col-sm-4">
-          			<div class="card text-dark bg-light mb-3">
+          			<div class="card border-success mb-3">
           				<div class="card-body">
             				<h4 class="card-title">Total Revenue</h4>
             				<p class="card-text" th:text="'$' + ${revenue}"></p> 
@@ -35,7 +36,7 @@
           			</div>
         		</div>
         		<div class="col-sm-4">
-          			<div class="card text-dark bg-light mb-3">
+          			<div class="card border-success mb-3">
           				<div class="card-body">
             				<h4 class="card-title">Total Profit</h4>
             				<p class="card-text" th:text="'$' + ${profit}">amount</p> 
@@ -43,7 +44,7 @@
           			</div>
         		</div>
         		<div class="col-sm-4">
-          			<div class="card text-dark bg-light mb-3">
+          			<div class="card border-success mb-3">
           				<div class="card-body">
             				<h4 class="card-title">Total Sales</h4>
             				<p class="card-text" th:text="${salesCount}"></p> 
@@ -54,10 +55,10 @@
       		
       		<div class="row">
       			<div class="col-sm-6">
-          			<div class="card text-dark bg-light mb-3">
+          			<div class="card border-danger mb-3">
           				<div class="card-body">
             				<h4 class="card-title">Inventory - Low Stock</h4>
-            				<div  th:if="${!lowItemList.isEmpty()}">
+            				<div th:if="${!lowItemList.isEmpty()}">
             					<table class="table table-bordered table-sm align-middle">
             						<tr>
             							<th>Item Name</th>
@@ -78,7 +79,7 @@
           			</div>
         		</div>
         		<div class="col-sm-6">
-          			<div class="card text-dark bg-light mb-3">
+          			<div class="card border-success mb-3">
           				<div class="card-body">
             				<h4 class="card-title">Top Selling Items</h4>
             				<table class="table table-bordered table-sm align-middle">
