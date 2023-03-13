@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.perscholas.sims.dto.TopSaleItems;
 import com.perscholas.sims.model.Sale;
 
 public interface SaleService {
@@ -14,7 +15,7 @@ public interface SaleService {
 	void addNewSale(Sale sale);
 	void updateSale(Sale updatedSale);
 	void deleteSaleById(Long saleId);
-	List<Object[]> getTop3SaleItems();
+	List<TopSaleItems> getTop3SaleItems();
 	BigDecimal getTotalRevenue();
 	BigDecimal getTotalProfit();
 	int getTotalSales();

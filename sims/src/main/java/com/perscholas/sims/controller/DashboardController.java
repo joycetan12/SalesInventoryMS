@@ -1,7 +1,6 @@
 package com.perscholas.sims.controller;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.perscholas.sims.dto.SalesByMonth;
+import com.perscholas.sims.dto.TopSaleItems;
 import com.perscholas.sims.model.Item;
 import com.perscholas.sims.service.ItemService;
 import com.perscholas.sims.service.SaleService;
@@ -36,11 +35,11 @@ public class DashboardController {
 		int salesCount = saleService.getTotalSales();
 		model.addAttribute("salesCount", salesCount);
 		
-		List<Object[]> topObjList = saleService.getTop3SaleItems();
-		for(Object[] obj: topObjList) {
-			Item item = itemService.getItemById((Long) obj[0]).get();
-			obj[0] = item.getName();
-		}
+		List<TopSaleItems> topObjList = saleService.getTop3SaleItems();
+//		for(Object[] obj: topObjList) {
+//			Item item = itemService.getItemById((Long) obj[0]).get();
+//			obj[0] = item.getName();
+//		}
 		model.addAttribute("topItems", topObjList);
 		
 		Map<String, Integer> salesMap = saleService.getSalesCountByMonth();

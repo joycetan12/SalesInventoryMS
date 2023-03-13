@@ -89,11 +89,11 @@
             						<th>Total Quantity Sold</th>
             						<th>Total Revenue</th>
             					</tr>
-            					<tr th:each="obj, objStat : ${topItems}">
-            						<th th:text="(${objStat.index} + 1)"></th>
-            						<td th:text="${obj[0]}"></td>
-            						<td th:text="${obj[1]}"></td>
-            						<td th:text="'$' + ${obj[2]}"></td>
+            					<tr th:each="item, itemStat : ${topItems}">
+            						<th th:text="(${itemStat.index} + 1)"></th>
+            						<td th:text="${item.getItemName()}"></td>
+            						<td th:text="${item.getQuantity()}"></td>
+            						<td th:text="'$' + ${item.getRevenue()}"></td>
             					</tr>
             				</table>
             			</div>

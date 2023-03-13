@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.perscholas.sims.dto.ProfitByMonth;
 import com.perscholas.sims.dto.RevenueByMonth;
 import com.perscholas.sims.dto.SalesByMonth;
+import com.perscholas.sims.dto.TopSaleItems;
 import com.perscholas.sims.model.Item;
 import com.perscholas.sims.model.Sale;
 import com.perscholas.sims.repository.ItemRepository;
@@ -78,7 +79,7 @@ public class SaleServiceImpl implements SaleService {
 		saleRepository.deleteById(saleId);
 	}
 
-	public List<Object[]> getTop3SaleItems() {
+	public List<TopSaleItems> getTop3SaleItems() {
 		return saleRepository.findTop3ByTotalQuantity();
 	}
 

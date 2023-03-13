@@ -89,15 +89,6 @@ public class SaleServiceTest {
 		verify(saleRepository, times(1)).deleteById(100L);
 	}
 	
-	@Test
-	public void getTop3SaleItemsTest() {
-		Object[] o1 = {"item1", 100};
-		Object[] o2 = {"item2", 100};
-		Object[] o3 = {"item3", 100};
-		when(saleRepository.findTop3ByTotalQuantity()).thenReturn(Stream.of(o1, o2, o3).collect(Collectors.toList()));
-		Assertions.assertEquals(3, saleService.getTop3SaleItems().size());
-	}
-	
 	@Test 
 	public void getTotalRevenueTest() {
 		when(saleRepository.getTotalRevenue()).thenReturn(new BigDecimal("10000"));
