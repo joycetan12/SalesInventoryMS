@@ -2,6 +2,7 @@ package com.perscholas.sims.service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.perscholas.sims.model.Sale;
@@ -17,5 +18,8 @@ public interface SaleService {
 	BigDecimal getTotalRevenue();
 	BigDecimal getTotalProfit();
 	int getTotalSales();
+	Map<String, Integer> getSalesCountByMonth();
+	Map<String, BigDecimal> getProfitByMonth();
+	Map<String, BigDecimal> getRevenueByMonth();
 	
 }

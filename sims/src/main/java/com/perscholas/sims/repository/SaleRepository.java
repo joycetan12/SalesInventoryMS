@@ -7,9 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.perscholas.sims.dto.ProfitByMonth;
+import com.perscholas.sims.dto.RevenueByMonth;
+import com.perscholas.sims.dto.SalesByMonth;
 import com.perscholas.sims.model.Sale;
-
-import jakarta.transaction.Transactional;
 
 @Repository
 public interface SaleRepository extends JpaRepository<Sale, Long> {
@@ -35,7 +36,7 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 	BigDecimal getTotalProfit();
 	
 	@Query(
-		value = "SELECT COUNT(*) FROM sale",
+		value = "SELECT SUM(quantity) FROM sale",
 		nativeQuery = true)
 	int getTotalSales();
 
@@ -43,4 +44,20 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 		value = "SELECT item_id, SUM(quantity), SUM(sale_price*quantity) FROM sale GROUP BY item_id ORDER BY SUM(quantity) DESC LIMIT 3",
 		nativeQuery = true)
 	List<Object[]> findTop3ByTotalQuantity();
+	
+	@Query(
+		value = "SELECT MONTH(date_of_sale) as 'month', SUM(quantity) as 'salesCount' FROM sale GROUP BY MONTH(date_of_sale) ORDER BY MONTH(date_of_sale)",
+		nativeQuery = true)
+	List<SalesByMonth> getSalesCountByMonth();
+	
+	@Query(
+		value = "SELECT MONTH(date_of_sale) as 'month', (SUM(s.quantity*s.sale_price) - SUM(s.quantity*i.cost)) as 'profit' FROM sale s, item i WHERE s.item_id = i.id GROUP BY MONTH(date_of_sale) ORDER BY MONTH(date_of_sale)",
+		nativeQuery = true)
+	List<ProfitByMonth> getProfitByMonth();
+	
+	@Query(
+		value = "SELECT MONTH(date_of_sale) as 'month', SUM(s.quantity*s.sale_price) as 'revenue' FROM sale s, item i WHERE s.item_id = i.id GROUP BY MONTH(date_of_sale) ORDER BY MONTH(date_of_sale)",
+		nativeQuery = true)
+	List<RevenueByMonth> getRevenueByMonth();
+	
 }
