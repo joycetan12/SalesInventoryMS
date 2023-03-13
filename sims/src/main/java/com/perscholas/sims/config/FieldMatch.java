@@ -1,4 +1,4 @@
-package com.perscholas.sims.security;
+package com.perscholas.sims.config;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

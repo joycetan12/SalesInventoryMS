@@ -1,4 +1,4 @@
-package com.perscholas.sims.security;
+package com.perscholas.sims.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

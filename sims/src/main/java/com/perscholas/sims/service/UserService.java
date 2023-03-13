@@ -2,8 +2,8 @@ package com.perscholas.sims.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import com.perscholas.sims.dto.UserRegistrationDto;
 import com.perscholas.sims.model.User;
-import com.perscholas.sims.security.UserRegistrationDto;
 
 public interface UserService extends UserDetailsService {
 

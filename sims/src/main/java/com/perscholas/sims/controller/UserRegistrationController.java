@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.perscholas.sims.dto.UserRegistrationDto;
 import com.perscholas.sims.model.User;
-import com.perscholas.sims.security.UserRegistrationDto;
 import com.perscholas.sims.service.UserService;
 
 import jakarta.validation.Valid;

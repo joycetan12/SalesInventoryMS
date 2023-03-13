@@ -1,4 +1,7 @@
-package com.perscholas.sims.security;
+package com.perscholas.sims.dto;
+
+import com.perscholas.sims.config.FieldMatch;
+import com.perscholas.sims.config.FieldMatch.List;
 
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;

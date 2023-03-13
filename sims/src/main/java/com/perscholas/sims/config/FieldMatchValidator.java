@@ -1,4 +1,4 @@
-package com.perscholas.sims.security;
+package com.perscholas.sims.config;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
