@@ -46,14 +46,14 @@
       					<td th:text="${item.inventory}"></td>
       					<td th:text="'$' + ${item.cost}"></td>
       					<td>
-      						<button th:onclick="|window.location.href='/inventory/edit/${item.id}'|" th:field=${item.id}>Edit</button>
-      						<button th:onclick="|window.location.href='/inventory/delete/${item.id}'|" th:field=${item.id}>Delete</button>
+      						<button class="btn btn-outline-primary btn-sm" th:onclick="|window.location.href='/inventory/edit/${item.id}'|" th:field=${item.id}>Edit</button>
+      						<button class="btn btn-outline-danger btn-sm" th:onclick="|window.location.href='/inventory/delete/${item.id}'|" th:field=${item.id}>Delete</button>
       					</td>
     				</tr>
   				</tbody>
 			</table>
 				
-			<button th:onclick="|window.location.href='/inventory/create'|">Create New Item</button>
+			<button class="btn btn-outline-dark btn-sm" th:onclick="|window.location.href='/inventory/create'|">Create New Item</button>
 		</div>
 	</div>
 	

@@ -52,14 +52,14 @@
       					<td th:text="'$' + (${sale.salePrice} * ${sale.quantity})"></td>
       					<td th:text="${sale.paid} ? 'PAID' : 'UNPAID'"></td>
       					<td>
-      						<button th:onclick="|window.location.href='/sales/edit/${sale.id}'|" th:field=${sale.id}>Edit</button>
-      						<button th:onclick="|window.location.href='/sales/delete/${sale.id}'|" th:field=${sale.id}>Delete</button>
+      						<button class="btn btn-outline-primary btn-sm" th:onclick="|window.location.href='/sales/edit/${sale.id}'|" th:field=${sale.id}>Edit</button>
+      						<button class="btn btn-outline-danger btn-sm" th:onclick="|window.location.href='/sales/delete/${sale.id}'|" th:field=${sale.id}>Delete</button>
       					</td>
     				</tr>
   				</tbody>
 			</table>
 
-			<button th:onclick="|window.location.href='/sales/create'|">Create Sale Item</button>
+			<button class="btn btn-outline-dark btn-sm" th:onclick="|window.location.href='/sales/create'|">Create New Sale</button>
 		</div>
 	</div>
 	

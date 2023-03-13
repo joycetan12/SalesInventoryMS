@@ -44,7 +44,8 @@
         			<input type="text" class="form-control" th:field="*{email}">
         			<p class="error-message" th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation error</p>
         		</div>
-				<button type="submit" class="btn btn-primary btn-block mt-3">Update Customer Info</button>
+        		<br>
+				<button type="submit" class="btn btn-outline-dark btn-sm">Update Customer Info</button>
         	</form>
         </div>
 	</div>
