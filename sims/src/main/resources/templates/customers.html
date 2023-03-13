@@ -44,14 +44,14 @@
       					<td th:text="${cust.lastName}"></td>
       					<td th:text="${cust.email}"></td>
       					<td>
-      						<button th:onclick="|window.location.href='/customers/edit/${cust.id}'|" th:field=${cust.id}>Edit</button>
-      						<button th:onclick="|window.location.href='/customers/${cust.id}'|" th:field=${cust.id}>Delete</button>
+      						<button class="btn btn-outline-primary btn-sm" th:onclick="|window.location.href='/customers/edit/${cust.id}'|" th:field=${cust.id}>Edit</button>
+      						<button class="btn btn-outline-danger btn-sm" th:onclick="|window.location.href='/customers/delete/${cust.id}'|" th:field=${cust.id}>Delete</button>
       					</td>
     				</tr>
   				</tbody>
 			</table>
 				
-			<button th:onclick="|window.location.href='/customers/create'|">Create New Customer</button>
+			<button class="btn btn-outline-dark btn-sm" th:onclick="|window.location.href='/customers/create'|">Create New Customer</button>
 		</div>
 	</div>
 	
