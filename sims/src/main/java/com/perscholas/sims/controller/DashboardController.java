@@ -36,10 +36,6 @@ public class DashboardController {
 		model.addAttribute("salesCount", salesCount);
 		
 		List<TopSaleItems> topObjList = saleService.getTop3SaleItems();
-//		for(Object[] obj: topObjList) {
-//			Item item = itemService.getItemById((Long) obj[0]).get();
-//			obj[0] = item.getName();
-//		}
 		model.addAttribute("topItems", topObjList);
 		
 		Map<String, Integer> salesMap = saleService.getSalesCountByMonth();
