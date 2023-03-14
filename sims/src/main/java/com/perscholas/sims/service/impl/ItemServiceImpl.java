@@ -1,4 +1,4 @@
-package com.perscholas.sims.service;
+package com.perscholas.sims.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.perscholas.sims.model.Item;
 import com.perscholas.sims.repository.ItemRepository;
 import com.perscholas.sims.repository.SaleRepository;
+import com.perscholas.sims.service.ItemService;
 
 import jakarta.transaction.Transactional;
 

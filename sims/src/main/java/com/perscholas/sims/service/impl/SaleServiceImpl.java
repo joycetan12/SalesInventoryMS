@@ -1,4 +1,4 @@
-package com.perscholas.sims.service;
+package com.perscholas.sims.service.impl;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -18,6 +18,7 @@ import com.perscholas.sims.model.Item;
 import com.perscholas.sims.model.Sale;
 import com.perscholas.sims.repository.ItemRepository;
 import com.perscholas.sims.repository.SaleRepository;
+import com.perscholas.sims.service.SaleService;
 
 @Service
 public class SaleServiceImpl implements SaleService {
@@ -76,6 +77,9 @@ public class SaleServiceImpl implements SaleService {
 	}
 
 	public void deleteSaleById(Long saleId) {
+		Sale sale = saleRepository.findById(saleId).get();
+		Item item = itemRepository.findById(sale.getItem().getId()).get();
+		item.setInventory(item.getInventory() + sale.getQuantity());
 		saleRepository.deleteById(saleId);
 	}
 

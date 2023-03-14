@@ -1,4 +1,4 @@
-package com.perscholas.sims.service;
+package com.perscholas.sims.service.impl;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -16,6 +16,7 @@ import com.perscholas.sims.dto.UserRegistrationDto;
 import com.perscholas.sims.model.Role;
 import com.perscholas.sims.model.User;
 import com.perscholas.sims.repository.UserRepository;
+import com.perscholas.sims.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
