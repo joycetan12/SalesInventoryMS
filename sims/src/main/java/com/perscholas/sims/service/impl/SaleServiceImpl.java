@@ -59,7 +59,8 @@ public class SaleServiceImpl implements SaleService {
 				existingItem.setInventory(existingItem.getInventory() + existingSale.getQuantity());
 				Item updatedItem = itemRepository.findById(updatedSale.getItem().getId()).get();
 				updatedItem.setInventory(updatedItem.getInventory() - updatedSale.getQuantity());
-			} else if (existingSale.getQuantity() != updatedSale.getQuantity()) {
+			} 
+			else if (existingSale.getQuantity() != updatedSale.getQuantity()) {
 				Item existingItem = itemRepository.findById(existingSale.getItem().getId()).get();
 				int difference = updatedSale.getQuantity() - existingSale.getQuantity();
 				int newCount = existingItem.getInventory() - difference;
@@ -77,6 +78,7 @@ public class SaleServiceImpl implements SaleService {
 	}
 
 	public void deleteSaleById(Long saleId) {
+		// update item inventory before deleting a sale
 		Sale sale = saleRepository.findById(saleId).get();
 		Item item = itemRepository.findById(sale.getItem().getId()).get();
 		item.setInventory(item.getInventory() + sale.getQuantity());
@@ -101,11 +103,14 @@ public class SaleServiceImpl implements SaleService {
 
 	public Map<String, Integer> getSalesCountByMonth() {
 		List<SalesByMonth> salesCountByMonthList = saleRepository.getSalesCountByMonth();
+		
+		// creating map for sales by month 
 		Map<Integer, Integer> salesMonthMap = new HashMap<>();
 		for(SalesByMonth s: salesCountByMonthList) {
 			salesMonthMap.put(s.getMonth(), s.getSalesCount());
 		}
 		
+		// creating map to be displayed in bar graph for dashboard
 		Map<String, Integer> salesMap = new LinkedHashMap<>();
 		for(int i = 1; i <= 12; i++) {
 			if(salesMonthMap.containsKey(i)) {
@@ -121,11 +126,14 @@ public class SaleServiceImpl implements SaleService {
 	
 	public Map<String, BigDecimal> getProfitByMonth() {
 		List<ProfitByMonth> profitByMonthList = saleRepository.getProfitByMonth();
+		
+		// creating map for profit by month 
 		Map<Integer, BigDecimal> profitMonthMap = new HashMap<>();
 		for(ProfitByMonth p: profitByMonthList) {
 			profitMonthMap.put(p.getMonth(), p.getProfit());
 		}
 		
+		// creating map to be displayed in bar graph for dashboard
 		Map<String, BigDecimal> profitMap = new LinkedHashMap<>();
 		for(int i = 1; i <= 12; i++) {
 			if(profitMonthMap.containsKey(i)) {
@@ -141,11 +149,14 @@ public class SaleServiceImpl implements SaleService {
 	
 	public Map<String, BigDecimal> getRevenueByMonth() {
 		List<RevenueByMonth> revenueByMonthList = saleRepository.getRevenueByMonth();
+		
+		// creating map for revenue by month
 		Map<Integer, BigDecimal> revenueMonthMap = new HashMap<>();
 		for(RevenueByMonth r: revenueByMonthList) {
 			revenueMonthMap.put(r.getMonth(), r.getRevenue());
 		}
 		
+		// creating map to be displayed in bar graph for dashboard
 		Map<String, BigDecimal> revenueMap = new LinkedHashMap<>();
 		for(int i = 1; i <= 12; i++) {
 			if(revenueMonthMap.containsKey(i)) {
